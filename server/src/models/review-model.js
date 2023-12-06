@@ -1,4 +1,5 @@
 import {DataTypes, sequelize} from '../database/database.config.js';
+import UserModel from './user-model.js';
 
 const ReviewModel = sequelize.define(
     'Review',
@@ -27,5 +28,7 @@ const ReviewModel = sequelize.define(
         timestamps: false,
     },
 );
+
+ReviewModel.belongsTo(UserModel, {foreignKey: 'userId'});
 
 export default ReviewModel;

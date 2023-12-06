@@ -1,5 +1,5 @@
-import UserModel from './user-model.js';
 import {DataTypes, sequelize} from '../database/database.config.js';
+import UserModel from './user-model.js';
 
 const TokenModel = sequelize.define(
     'Token',
