@@ -1,6 +1,6 @@
 import ApiError from "../exceptions/api-error.js";
 import realtyModel from "../models/realty-model.js";
-import { fileURLToPath } from 'url';
+import {fileURLToPath} from 'url';
 import path from 'path';
 import fs from 'fs/promises';
 
@@ -50,11 +50,13 @@ const RealtyService = {
         await realty.destroy();
     },
 
-    async deletePhoto (photo) {
+    async deletePhoto(photo) {
         const __filename = fileURLToPath(import.meta.url);
         const __dirname = path.dirname(__filename);
         const photoPath = path.join(__dirname, '../../uploads', photo);
-        await fs.unlink(photoPath);
+        try {
+            await fs.unlink(photoPath);
+        } catch (error) {}
     }
 };
 
