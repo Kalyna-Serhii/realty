@@ -1,6 +1,8 @@
 import bcrypt from 'bcrypt';
 import UserModel from '../models/user-model.js';
 import TokenModel from '../models/token-model.js';
+import tokenService from "./token-service.js";
+import RealtyModel from "../models/realty-model.js";
 import ApiError from '../exceptions/api-error.js';
 
 const UserService = {
@@ -72,6 +74,51 @@ const UserService = {
             await userToken.destroy();
         }
         await user.destroy();
+    },
+
+    async addToWishList(token, body) {
+        const {realtyId} = body;
+        const userData = tokenService.validateAccessToken(token);
+        if (!userData) {
+            throw ApiError.UnauthorizedError();
+        }
+        const realty = await RealtyModel.findOne({where: {id: realtyId}});
+        if (!realty) {
+            throw ApiError.BadRequest("No realty found with this id");
+        }
+        const userId = userData.id;
+        const user = await UserModel.findOne({where: {id: userId}});
+        const listFromDb = user.wishList;
+        const list = JSON.parse(listFromDb);
+        if (list.includes(realtyId)) {
+            throw ApiError.BadRequest("This realty is already in your wish list");
+        }
+        list.push(realtyId);
+        user.wishList = JSON.stringify(list);
+        await user.save();
+    },
+
+    async deleteFromWishList(token, body) {
+        const {realtyId} = body;
+        const userData = tokenService.validateAccessToken(token);
+        if (!userData) {
+            throw ApiError.UnauthorizedError();
+        }
+        const realty = await RealtyModel.findOne({where: {id: realtyId}});
+        if (!realty) {
+            throw ApiError.BadRequest("No realty found with this id");
+        }
+        const userId = userData.id;
+        const user = await UserModel.findOne({where: {id: userId}});
+        const listFromDb = user.wishList;
+        const list = JSON.parse(listFromDb);
+        if (!list.includes(realtyId)) {
+            throw ApiError.BadRequest("This realty is not in your wish list");
+        }
+        const index = list.indexOf(realtyId);
+        list.splice(index, 1);
+        user.wishList = JSON.stringify(list);
+        await user.save();
     },
 };
 

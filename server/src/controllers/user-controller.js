@@ -45,6 +45,24 @@ const UserController = {
             next(error);
         }
     },
+
+    async addToWishList(req, res, next) {
+        try {
+            await userService.addToWishList(req.cookies.accessToken, req.body);
+            return res.status(200).send();
+        } catch (error) {
+            next(error);
+        }
+    },
+
+    async deleteFromWishList(req, res, next) {
+        try {
+            await userService.deleteFromWishList(req.cookies.accessToken, req.body);
+            return res.status(200).send();
+        } catch (error) {
+            next(error);
+        }
+    },
 }
 
 export default UserController;
