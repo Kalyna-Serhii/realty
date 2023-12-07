@@ -45,6 +45,15 @@ const RealtyController = {
             next(error);
         }
     },
+
+    async buyRealty(req, res, next) {
+        try {
+            await realtyService.buyRealty(req.cookies.accessToken, req.body);
+            return res.status(200).send();
+        } catch (error) {
+            next(error);
+        }
+    }
 }
 
 export default RealtyController;

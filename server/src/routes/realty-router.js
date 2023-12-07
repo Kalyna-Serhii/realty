@@ -9,5 +9,6 @@ router.get("/realty/:id", realtyController.getRealtyById);
 router.post("/realty", upload.single('photo'), realtyController.createRealty);
 router.patch("/realty/:id", upload.single('photo'), realtyController.updateRealty);
 router.delete("/realty/:id", realtyController.deleteRealty);
+router.post("/realty/buy", realtyController.buyRealty);
 
 export default router;

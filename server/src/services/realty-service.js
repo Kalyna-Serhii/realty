@@ -1,5 +1,6 @@
 import ApiError from "../exceptions/api-error.js";
 import realtyModel from "../models/realty-model.js";
+import dealService from "./deal-service.js";
 import {fileURLToPath} from 'url';
 import path from 'path';
 import fs from 'fs/promises';
@@ -57,7 +58,16 @@ const RealtyService = {
         try {
             await fs.unlink(photoPath);
         } catch (error) {}
-    }
+    },
+
+    async buyRealty(token, body) {
+        const {realtyId} = body;
+        const realty = await realtyModel.findOne({where: {id: realtyId}});
+        if (!realty) {
+            throw ApiError.BadRequest('Realty not found');
+        }
+        await dealService.createDeal(token, {realtyId});
+    },
 };
 
 export default RealtyService;

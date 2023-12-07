@@ -21,6 +21,7 @@ const DealService = {
 
     async createDeal(token, body) {
         let {userId, realtyId, serviceId, price} = body;
+        console.log(2, realtyId)
         if (!userId) {
             const userData = tokenService.validateAccessToken(token);
             if (!userData) {
