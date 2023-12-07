@@ -1,6 +1,6 @@
 import bcrypt from 'bcrypt';
 import UserModel from '../models/user-model.js';
-import TokenModel from "../models/token-model.js";
+import TokenModel from '../models/token-model.js';
 import ApiError from '../exceptions/api-error.js';
 
 const UserService = {

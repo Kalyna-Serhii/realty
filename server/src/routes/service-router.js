@@ -8,5 +8,6 @@ router.get('/service/:id', serviceController.getServiceById);
 router.post('/service', serviceController.createService);
 router.patch('/service/:id', serviceController.updateService);
 router.delete('/service/:id', serviceController.deleteService);
+router.post('/service/buy', serviceController.buyService);
 
 export default router;

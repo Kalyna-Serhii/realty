@@ -1,4 +1,4 @@
-import dealService from "../services/deal-service.js";
+import dealService from '../services/deal-service.js';
 
 const dealController = {
     async getDeals(req, res, next) {

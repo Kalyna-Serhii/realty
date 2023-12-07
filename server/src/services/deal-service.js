@@ -1,9 +1,9 @@
 import ApiError from '../exceptions/api-error.js';
-import dealModel from "../models/deal-model.js";
-import userModel from "../models/user-model.js";
-import realtyModel from "../models/realty-model.js";
-import serviceModel from "../models/service-model.js";
-import tokenService from "./token-service.js";
+import dealModel from '../models/deal-model.js';
+import userModel from '../models/user-model.js';
+import realtyModel from '../models/realty-model.js';
+import serviceModel from '../models/service-model.js';
+import tokenService from './token-service.js';
 
 const DealService = {
     async getDeals() {
@@ -21,7 +21,6 @@ const DealService = {
 
     async createDeal(token, body) {
         let {userId, realtyId, serviceId, price} = body;
-        console.log(2, realtyId)
         if (!userId) {
             const userData = tokenService.validateAccessToken(token);
             if (!userData) {

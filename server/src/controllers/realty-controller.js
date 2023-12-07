@@ -1,4 +1,4 @@
-import realtyService from "../services/realty-service.js";
+import realtyService from '../services/realty-service.js';
 
 const RealtyController = {
     async getRealty(req, res, next) {

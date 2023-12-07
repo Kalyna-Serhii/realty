@@ -1,5 +1,6 @@
 import ApiError from '../exceptions/api-error.js';
 import serviceModel from '../models/service-model.js';
+import dealService from './deal-service.js';
 
 const ServiceService = {
     async getServices() {
@@ -48,6 +49,15 @@ const ServiceService = {
         }
         await service.destroy();
     },
+
+    async buyService(token, body) {
+        const {serviceId} = body;
+        const service = await serviceModel.findOne({where: {id: serviceId}});
+        if (!service) {
+            throw ApiError.BadRequest('Service not found');
+        }
+        await dealService.createDeal(token, {serviceId});
+    }
 };
 
 export default ServiceService;

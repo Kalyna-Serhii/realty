@@ -4,7 +4,7 @@ import cors from 'cors';
 import corsOptions from './src/cors/cors.config.js';
 import cookieParser from 'cookie-parser';
 import { fileURLToPath } from 'url';
-import path from "path";
+import path from 'path';
 import errorMiddleware from './src/middlewares/error-middleware.js';
 import {authRouter, userRouter, dealRouter, realtyRouter, serviceRouter, reviewRouter} from './src/routes/index.js';
 

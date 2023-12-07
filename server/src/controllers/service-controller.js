@@ -1,4 +1,4 @@
-import serviceService from "../services/service-service.js";
+import serviceService from '../services/service-service.js';
 
 const serviceController = {
     async getServices(req, res, next) {
@@ -45,6 +45,15 @@ const serviceController = {
             next(error);
         }
     },
+
+    async buyService(req, res, next) {
+        try {
+            await serviceService.buyService(req.cookies.accessToken, req.body);
+            return res.status(200).send();
+        } catch (error) {
+            next(error);
+        }
+    }
 };
 
 export default serviceController;

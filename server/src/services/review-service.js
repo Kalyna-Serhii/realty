@@ -1,6 +1,6 @@
 import ApiError from '../exceptions/api-error.js';
 import reviewModel from '../models/review-model.js';
-import tokenService from "./token-service.js";
+import tokenService from './token-service.js';
 
 const ReviewService = {
     async getReviews() {
