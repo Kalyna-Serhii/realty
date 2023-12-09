@@ -1,4 +1,4 @@
-import $axios from "@/api/axiosInstance";
+import {$axios, serverURL} from "@/api/axiosInstance";
 
 class ApiInstance {
     constructor(serverURL) {
@@ -29,6 +29,6 @@ class ApiInstance {
     }
 }
 
-const $api = new ApiInstance('http://localhost:8086/api');
+const $api = new ApiInstance(serverURL);
 
 export default $api;

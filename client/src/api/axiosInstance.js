@@ -20,4 +20,4 @@ $axios.interceptors.response.use(config => config, async error => {
     throw error;
 });
 
-export default $axios;
+export {$axios, serverURL};

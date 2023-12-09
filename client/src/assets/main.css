@@ -355,3 +355,8 @@ td {
         margin-left: -48%;
     }
 }
+
+.realtyPhoto {
+    max-width: 200px;
+    max-height: 200px;
+}

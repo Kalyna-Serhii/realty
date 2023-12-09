@@ -39,7 +39,28 @@ const routes = [
         meta: {
             title: 'Update user'
         }
-    }
+    },
+    {
+        path: '/realty',
+        component: () => import('../pages/RealtyPage.vue'),
+        meta: {
+            title: 'Realty'
+        }
+    },
+    {
+        path: '/realty/new',
+        component: () => import('../pages/CreateRealtyPage.vue'),
+        meta: {
+            title: 'Create realty'
+        }
+    },
+    {
+        path: '/realty/:id',
+        component: () => import('../pages/UpdateRealtyPage.vue'),
+        meta: {
+            title: 'Update realty'
+        }
+    },
 ]
 
 const router = createRouter({

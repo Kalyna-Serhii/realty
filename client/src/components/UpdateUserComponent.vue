@@ -9,6 +9,7 @@
               type="text"
               id="name"
               name="name"
+              required
               v-model="formData.name"
               @input="validate($event.target.name)"
           />
@@ -23,6 +24,7 @@
               type="text"
               id="surname"
               name="surname"
+              required
               v-model="formData.surname"
               @input="validate($event.target.name)"
           />
@@ -37,6 +39,7 @@
               type="email"
               id="email"
               name="email"
+              required
               v-model="formData.email"
               @input="validate($event.target.name)"
           />
@@ -66,6 +69,7 @@
           <select
               id="role"
               name="role"
+              required
               v-model="formData.role">
             <option value="user">Користувач</option>
             <option value="admin">Адміністратор</option>
@@ -82,7 +86,7 @@
 import api from "../api";
 import inputMask from "../utils/InputMask";
 import getFormBody from "../utils/getFormBody";
-import {validateEmail, validateName, validatePassword, validatePhone, validateSurname} from "@/utils/validateFields";
+import {validateEmail, validateName, validatePhone, validateSurname} from "@/utils/validateFields";
 
 export default {
   data() {

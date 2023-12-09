@@ -37,8 +37,10 @@ const RealtyService = {
         updatedFields.area = area;
         updatedFields.rooms = rooms;
         updatedFields.price = price;
-        updatedFields.photo = photo.filename;
-        await this.deletePhoto(realty.photo);
+        if (photo) {
+            updatedFields.photo = photo.filename;
+            await this.deletePhoto(realty.photo);
+        }
         await realty.update(updatedFields);
     },
 
