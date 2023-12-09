@@ -76,6 +76,18 @@ const UserService = {
         await user.destroy();
     },
 
+    async getWishList(token) {
+        const userData = tokenService.validateAccessToken(token);
+        if (!userData) {
+            throw ApiError.UnauthorizedError();
+        }
+        const userId = userData.id;
+        const user = await UserModel.findOne({where: {id: userId}});
+        const listFromDb = user.wishList;
+        const list = JSON.parse(listFromDb);
+        return list;
+    },
+
     async addToWishList(token, body) {
         const {realtyId} = body;
         const userData = tokenService.validateAccessToken(token);

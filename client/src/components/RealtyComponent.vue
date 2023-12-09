@@ -21,6 +21,8 @@
         <td>{{ item.rooms }}</td>
         <td>${{ item.price }}</td>
         <td>
+          <button v-if="!wishList.includes(item.id)" @click="addToWishList(item.id)">Like</button>
+          <button v-else @click="deleteFromWishList(item.id)">Dislike</button>
           <button @click="toEditPage(item.id)">Редагувати</button>
           <button @click="deleteRealty(item.id)">Видалити</button>
         </td>
@@ -37,12 +39,12 @@ export default {
     return {
       realty: [],
       serverURL: serverURL,
+      wishList: [],
     }
   },
 
   methods: {
     async getRealty() {
-
       const response = await api.realty.getRealty();
       this.realty = response;
     },
@@ -56,10 +58,28 @@ export default {
       await api.realty.deleteRealty(id);
       await this.getRealty();
     },
+    async getWishList() {
+      this.wishList = await api.users.getWishList();
+    },
+    async addToWishList(id) {
+      const formBody = {
+        realtyId: id,
+      }
+      await api.users.addToWishList(formBody);
+      await this.getWishList();
+    },
+    async deleteFromWishList(id) {
+      const formBody = {
+        realtyId: id,
+      }
+      await api.users.deleteFromWishList(formBody);
+      await this.getWishList();
+    }
   },
 
   async mounted() {
     await this.getRealty();
+    await this.getWishList();
   },
 }
 </script>

@@ -146,7 +146,7 @@ export default {
     async submitForm() {
       const form = document.querySelector("form")
       const formBody = getFormBody(form);
-      const response = await api.users.createUser(formBody);
+      const response = await api.auth.register(formBody);
       if (response && response.status === 200) {
         this.$router.push("/");
       }

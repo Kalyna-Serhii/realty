@@ -60,6 +60,42 @@ const usersApi = {
             }
         }
     },
+
+    async getWishList() {
+        try {
+            return await $api.get('/user/wish-list');
+        } catch (error) {
+            if (error.response) {
+                alert(`Failed to receive wishlist: ${error.response.data.message}`);
+            } else {
+                alert(`Failed to receive wishlist: ${error.message || error}`);
+            }
+        }
+    },
+
+    async addToWishList(body) {
+        try {
+            return await $api.post('/user/add-to-wish-list', body);
+        } catch (error) {
+            if (error.response) {
+                alert(`Failed to add to wishlist: ${error.response.data.message}`);
+            } else {
+                alert(`Failed to add to wishlist: ${error.message || error}`);
+            }
+        }
+    },
+
+    async deleteFromWishList(body) {
+        try {
+            return await $api.post('/user/delete-from-wish-list', body);
+        } catch (error) {
+            if (error.response) {
+                alert(`Failed to delete from wishlist: ${error.response.data.message}`);
+            } else {
+                alert(`Failed to delete from wishlist: ${error.message || error}`);
+            }
+        }
+    },
 };
 
 export default usersApi;

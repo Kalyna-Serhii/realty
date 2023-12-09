@@ -46,6 +46,15 @@ const UserController = {
         }
     },
 
+    async getWishList(req, res, next) {
+        try {
+            const wishList = await userService.getWishList(req.cookies.accessToken);
+            return res.status(200).json(wishList);
+        } catch (error) {
+            next(error);
+        }
+    },
+
     async addToWishList(req, res, next) {
         try {
             await userService.addToWishList(req.cookies.accessToken, req.body);
