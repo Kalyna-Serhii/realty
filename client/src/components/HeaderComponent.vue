@@ -6,22 +6,31 @@
     <div class="title">Real estate agency</div>
     <ul>
       <li>
-        <a href="">Головна</a>
+        <router-link to="/">Головна</router-link>
       </li>
       <li>
-        <a href="">FAQ</a>
+        <router-link to="/realty">Нерухомість</router-link>
       </li>
       <li>
-        <a href="">Контакти</a>
+        <router-link to="/services">Сервіси</router-link>
       </li>
       <li>
-        <a href="">CRM</a>
+        <router-link to="/reviews">Відгуки</router-link>
+      </li>
+      <li>
+        <router-link to="/deals">Угоди</router-link>
+      </li>
+      <li>
+        <router-link to="/users">Користувачі</router-link>
       </li>
       <li class="authorization-button">
-        <a href="">Увійти</a>
+        <router-link to="/login">Увійти</router-link>
       </li>
       <li class="registration-button">
-        <a href="">Зареєструватись</a>
+        <router-link to="/register">Зареєструватись</router-link>
+      </li>
+      <li class="authorization-button">
+        <router-link to="/logout">Вийти</router-link>
       </li>
     </ul>
   </header>
