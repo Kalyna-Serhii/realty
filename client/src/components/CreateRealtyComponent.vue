@@ -16,22 +16,29 @@
 
         <div>
           <label for="type">Тип:</label>
-          <input
-              type="text"
+          <select
               id="type"
               name="type"
               required
-          />
+              v-model="type"
+          >
+            <option value="Квартира">Квартира</option>
+            <option value="Апартаменти">Апартаменти</option>
+            <option value="Приватний будинок">Приватний будинок</option>
+            <option value="Комерційна нерухомість">Комерційна нерухомість</option>
+          </select>
         </div>
 
         <div>
           <label for="city">Місто:</label>
-          <input
-              type="text"
+          <select
               id="city"
               name="city"
+              v-model="city"
               required
-          />
+          >
+            <option v-for="(city, index) in cities" :key="index" :value="city">{{ city }}</option>
+          </select>
         </div>
 
         <div>
@@ -41,6 +48,7 @@
               id="area"
               name="area"
               step="0.1"
+              min="1"
               required
           />
         </div>
@@ -51,6 +59,7 @@
               type="number"
               id="rooms"
               name="rooms"
+              min="1"
               required
           />
         </div>
@@ -61,6 +70,7 @@
               type="number"
               id="price"
               name="price"
+              min="1"
               required
           />
         </div>
@@ -76,6 +86,12 @@
 import api from "../api";
 
 export default {
+  data() {
+    return {
+      type: "",
+      cities: "",
+    }
+  },
   methods: {
     async submitForm() {
       const form = document.querySelector("form")
@@ -85,6 +101,15 @@ export default {
         this.$router.push("/realty");
       }
     },
+    async getCities() {
+      const cities = await fetch('/UA.txt');
+      const citiesInText = await cities.text();
+      const citiesInSplit = citiesInText.split('\n').map(city => city.trim());
+      this.cities = citiesInSplit;
+    },
   },
+  async mounted() {
+    await this.getCities();
+  }
 };
 </script>

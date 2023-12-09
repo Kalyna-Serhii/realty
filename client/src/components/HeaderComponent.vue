@@ -3,7 +3,11 @@
     <div class="lds-heart">
       <div></div>
     </div>
-    <div class="title">Real estate agency</div>
+    <ul>
+      <li>
+        <router-link to="/" class="title">Real estate agency</router-link>
+      </li>
+    </ul>
     <ul>
       <li>
         <router-link to="/">Головна</router-link>

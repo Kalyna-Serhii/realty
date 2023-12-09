@@ -25,24 +25,31 @@
 
         <div>
           <label for="type">Тип:</label>
-          <input
-              type="text"
+          <select
               id="type"
               name="type"
-              required
               v-model="formData.type"
-          />
+              required
+          >
+            <option v-for="(type, index) in tests" :key="index" :value="type">{{ type }}</option>
+<!--            <option value="Квартира">Квартира</option>-->
+<!--            <option value="Апартаменти">Апартаменти</option>-->
+<!--            <option value="Приватний будинок">Приватний будинок</option>-->
+<!--            <option value="Комерційна нерухомість">Комерційна нерухомість</option>-->
+          </select>
         </div>
 
         <div>
           <label for="city">Місто:</label>
-          <input
-              type="text"
+          <p>{{formData.city}}</p>
+          <select
               id="city"
               name="city"
-              required
               v-model="formData.city"
-          />
+              required
+          >
+            <option v-for="(city, index) in cities" :key="index" :value="city">{{ city }}</option>
+          </select>
         </div>
 
         <div>
@@ -52,6 +59,7 @@
               id="area"
               name="area"
               step="0.1"
+              min="1"
               required
               v-model="formData.area"
           />
@@ -63,6 +71,7 @@
               type="number"
               id="rooms"
               name="rooms"
+              min="1"
               required
               v-model="formData.rooms"
           />
@@ -74,6 +83,7 @@
               type="number"
               id="price"
               name="price"
+              min="1"
               required
               v-model="formData.price"
           />
@@ -94,6 +104,8 @@ export default {
   data() {
     return {
       serverURL: serverURL,
+      cities: "",
+      tests: ['Квартира', 'Апартаменти', 'Приватний будинок', 'Комерційна нерухомість'],
       formData: {
         id: null,
         photo: null,
@@ -121,6 +133,12 @@ export default {
         this.$router.push("/realty");
       }
     },
+    async getCities() {
+      const cities = await fetch('/UA.txt');
+      const citiesInText = await cities.text();
+      const citiesInSplit = citiesInText.split('\n').map(city => city.trim());
+      this.cities = citiesInSplit;
+    },
   },
   async mounted() {
     this.formData.id = this.$route.params.id;
@@ -131,6 +149,7 @@ export default {
     this.formData.area = realty.area;
     this.formData.rooms = realty.rooms;
     this.formData.price = realty.price;
+    await this.getCities();
   },
 };
 </script>

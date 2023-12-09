@@ -6,10 +6,9 @@ function validateEmail(email) {
 
 function validatePassword(password) {
     if (password.length < 8) {
-        this.formErrors.password =
-            "Пароль повинен містити принаймні 8 символів";
+        return "Пароль повинен містити принаймні 8 символів";
     } else if (!password.match(/[0-9]/)) {
-        this.formErrors.password = "Пароль має містити принаймні одну цифру";
+        return "Пароль має містити принаймні одну цифру";
     } else if (!password.match(/[A-Z]/)) {
         return "Пароль має містити принаймні одну заголовну літеру";
     }
