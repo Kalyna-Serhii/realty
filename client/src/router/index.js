@@ -26,6 +26,20 @@ const routes = [
             title: 'Users'
         }
     },
+    {
+        path: '/users/new',
+        component: () => import('../pages/CreateUserPage.vue'),
+        meta: {
+            title: 'Create user'
+        }
+    },
+    {
+        path: '/user/:id',
+        component: () => import('../pages/UpdateUserPage.vue'),
+        meta: {
+            title: 'Update user'
+        }
+    }
 ]
 
 const router = createRouter({
