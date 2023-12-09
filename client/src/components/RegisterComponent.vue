@@ -10,7 +10,7 @@
               id="name"
               name="name"
               v-model="formData.name"
-              @input="validateName"
+              @input="validate($event.target.name)"
           />
           <div class="error" v-if="formErrors.name">
             {{ formErrors.name }}
@@ -18,16 +18,16 @@
         </div>
 
         <div>
-          <label for="surName">Прізвище:</label>
+          <label for="surname">Прізвище:</label>
           <input
               type="text"
               id="surname"
               name="surname"
-              v-model="formData.surName"
-              @input="validateSurName"
+              v-model="formData.surname"
+              @input="validate($event.target.name)"
           />
-          <div class="error" v-if="formErrors.surName">
-            {{ formErrors.surName }}
+          <div class="error" v-if="formErrors.surname">
+            {{ formErrors.surname }}
           </div>
         </div>
 
@@ -38,7 +38,7 @@
               id="email"
               name="email"
               v-model="formData.email"
-              @input="validateEmail"
+              @input="validate($event.target.name)"
           />
           <div class="error" v-if="formErrors.email">
             {{ formErrors.email }}
@@ -52,7 +52,7 @@
               type="password"
               name="password"
               v-model="formData.password"
-              @input="validatePassword"
+              @input="validate($event.target.name)"
           />
           <div class="error" v-if="formErrors.password">
             {{ formErrors.password }}
@@ -66,8 +66,9 @@
               id="phone"
               name="phone"
               v-model.lazy="formData.phone"
-              @input="validatePhone"
-              @change="validatePhone"
+              @input="validate($event.target.name)"
+              @change="validate($event.target.name)"
+              @click="initInputMask"
           />
           <div class="error" v-if="formErrors.phone">
             {{ formErrors.phone }}
@@ -95,13 +96,14 @@
 import api from "../api";
 import inputMask from "../utils/InputMask";
 import getFormBody from "../utils/getFormBody";
+import {validateEmail, validateName, validatePassword, validatePhone, validateSurname} from "@/utils/validateFields";
 
 export default {
   data() {
     return {
       formData: {
         name: "",
-        surName: "",
+        surname: "",
         email: "",
         password: "",
         phone: "",
@@ -109,7 +111,7 @@ export default {
       },
       formErrors: {
         name: null,
-        surName: null,
+        surname: null,
         email: null,
         password: null,
         phone: null,
@@ -117,72 +119,36 @@ export default {
       },
     };
   },
-  async mounted() {
-    const element = document.getElementById("phone");
-    inputMask(element);
-  },
   methods: {
+    initInputMask() {
+      const element = document.getElementById("phone");
+      inputMask(element);
+    },
+    validate(element) {
+      switch (element) {
+        case 'name':
+          this.formErrors.name = validateName(this.formData.name);
+          break;
+        case 'surname':
+          this.formErrors.surname = validateSurname(this.formData.surname);
+          break;
+        case 'email':
+          this.formErrors.email = validateEmail(this.formData.email);
+          break;
+        case 'password':
+          this.formErrors.password = validatePassword(this.formData.password);
+          break;
+        case 'phone':
+          this.formErrors.phone = validatePhone(this.formData.phone);
+          break;
+      }
+    },
     async submitForm() {
       const form = document.querySelector("form")
       const formBody = getFormBody(form);
       const response = await api.users.createUser(formBody);
       if (response && response.status === 200) {
         this.$router.push("/");
-      }
-    },
-    validateEmail() {
-      if (!/^\S+@\S+\.\S+$/.test(this.formData.email)) {
-        this.formErrors.email = "Невірний формат email";
-      } else {
-        this.formErrors.email = null;
-      }
-    },
-    validatePassword() {
-      if (this.formData.password.length < 8) {
-        this.formErrors.password =
-            "Пароль повинен містити принаймні 8 символів";
-      } else if (!this.formData.password.match(/[0-9]/)) {
-        this.formErrors.password = "Пароль має містити принаймні одну цифру";
-      } else if (!this.formData.password.match(/[A-Z]/)) {
-        this.formErrors.password =
-            "Пароль має містити принаймні одну заголовну літеру";
-      } else {
-        this.formErrors.password = null;
-      }
-    },
-    validateSurName() {
-      const surName = this.formData.surName;
-
-      if (
-          surName.length < 2 ||
-          /[0-9]/.test(surName) ||
-          surName.indexOf("-") !== surName.lastIndexOf("-")
-      ) {
-        this.formErrors.surName = "Невірний формат прізвища";
-      } else {
-        this.formErrors.surName = null;
-      }
-    },
-    validateName() {
-      const name = this.formData.name;
-
-      if (
-          name.length < 2 ||
-          /[0-9]/.test(name) ||
-          name.indexOf("-") !== name.lastIndexOf("-")
-      ) {
-        this.formErrors.name = "Невірний формат імені";
-      } else {
-        this.formErrors.name = null;
-      }
-    },
-    validatePhone() {
-      const phoneRegex = /^\+38\(\d{3}\)-\d{3}-\d{2}-\d{2}$/;
-
-      if (!phoneRegex.test(this.formData.phone)) {
-        this.formErrors.phone = "Невірний формат номера телефону";
-      } else {
-        this.formErrors.phone = null;
       }
     },
   },
