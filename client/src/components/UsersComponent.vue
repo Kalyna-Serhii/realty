@@ -1,35 +1,42 @@
 <template>
-  <div class="wrapper">
-    <div id="table-div">
-      <button @click="toCreatePage()">Створити</button>
-      <table id="table">
-        <tr>
-          <td>Ім’я</td>
-          <td>Прізвище</td>
-          <td>Email</td>
-          <td>Номер</td>
-          <td>Роль</td>
-          <td>Керування</td>
-        </tr>
-        <tr v-for="(item, index) in users" :key="index">
-          <td>{{ item.name }}</td>
-          <td class="item">{{ item.surname }}</td>
-          <td>{{ item.email }}</td>
-          <td>{{ item.phone }}</td>
-          <td>{{ item.role }}</td>
-          <td>
-            <button @click="toEditPage(item.id)">Редагувати</button>
-            <button @click="deleteUser(item.id)">Видалити</button>
-          </td>
-        </tr>
-      </table>
+  <div class="page-b-black">
+    <div class="wrapper">
+      <div id="table-div">
+        <button class="fa-button" @click="toCreatePage()">
+          <font-awesome-icon :icon="['fas', 'plus']" /></button>
+        <table id="table">
+          <tr>
+            <td>Ім’я</td>
+            <td>Прізвище</td>
+            <td>Email</td>
+            <td>Номер</td>
+            <td>Роль</td>
+            <td>Керування</td>
+          </tr>
+          <tr v-for="(item, index) in users" :key="index">
+            <td>{{ item.name }}</td>
+            <td class="item">{{ item.surname }}</td>
+            <td>{{ item.email }}</td>
+            <td>{{ item.phone }}</td>
+            <td>{{ item.role }}</td>
+            <td>
+              <button class="fa-button" @click="toEditPage(item.id)">
+                <font-awesome-icon :icon="['fas', 'pen']" /></button>
+              <button class="fa-button" @click="deleteUser(item.id)">
+                <font-awesome-icon :icon="['fas', 'trash']" /></button>
+            </td>
+          </tr>
+        </table>
+      </div>
     </div>
   </div>
 </template>
 <script>
 import api from '@/api';
+import {FontAwesomeIcon} from "@fortawesome/vue-fontawesome";
 
 export default {
+  components: {FontAwesomeIcon},
   data() {
     return {
       users: [],

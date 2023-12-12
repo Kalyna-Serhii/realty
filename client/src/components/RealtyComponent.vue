@@ -1,42 +1,52 @@
 <template>
-  <div class="wrapper">
-    <div id="table-div">
-      <button @click="toCreatePage()">Створити</button>
-      <table id="table">
-        <tr>
-          <td>Фото</td>
-          <td>Тип</td>
-          <td>Місто</td>
-          <td>Площа, м²</td>
-          <td>Кімнати</td>
-          <td>Ціна</td>
-          <td>Керування</td>
-        </tr>
-        <tr v-for="(item, index) in realty" :key="index">
-          <td>
-            <img v-if="item.photo" :src="serverURL + /uploads/ + item.photo" alt="photo" class="realtyPhoto">
-          </td>
-          <td>{{ item.type }}</td>
-          <td>{{ item.city }}</td>
-          <td>{{ item.area }}</td>
-          <td>{{ item.rooms }}</td>
-          <td>${{ item.price }}</td>
-          <td>
-            <button v-if="!wishList.includes(item.id)" @click="addToWishList(item.id)">Like</button>
-            <button v-else @click="deleteFromWishList(item.id)">Dislike</button>
-            <button @click="toEditPage(item.id)">Редагувати</button>
-            <button @click="deleteRealty(item.id)">Видалити</button>
-          </td>
-        </tr>
-      </table>
+  <div class="page-b-black">
+    <div class="wrapper">
+      <div id="table-div">
+        <button class="fa-button" @click="toCreatePage">
+          <font-awesome-icon :icon="['fas', 'plus']" />
+        </button>
+        <table id="table">
+          <tr>
+            <td>Фото</td>
+            <td>Тип</td>
+            <td>Місто</td>
+            <td>Площа, м²</td>
+            <td>Кімнати</td>
+            <td>Ціна</td>
+            <td>Керування</td>
+          </tr>
+          <tr v-for="(item, index) in realty" :key="index">
+            <td>
+              <img v-if="item.photo" :src="serverURL + /uploads/ + item.photo" alt="photo" class="realtyPhoto">
+            </td>
+            <td>{{ item.type }}</td>
+            <td>{{ item.city }}</td>
+            <td>{{ item.area }}</td>
+            <td>{{ item.rooms }}</td>
+            <td>${{ item.price }}</td>
+            <td>
+              <button class="fa-button" v-if="!wishList.includes(item.id)" @click="addToWishList(item.id)">
+                <font-awesome-icon :icon="['fas', 'heart']" /></button>
+              <button class="fa-button" v-else @click="deleteFromWishList(item.id)">
+                <font-awesome-icon :icon="['far', 'heart']" /></button>
+              <button class="fa-button" @click="toEditPage(item.id)">
+                <font-awesome-icon :icon="['fas', 'pen']" /></button>
+              <button class="fa-button" @click="deleteRealty(item.id)">
+                <font-awesome-icon :icon="['fas', 'trash']" /></button>
+            </td>
+          </tr>
+        </table>
+      </div>
     </div>
   </div>
 </template>
 <script>
 import api from '@/api';
 import {serverURL} from "@/api/axiosInstance";
+import {FontAwesomeIcon} from "@fortawesome/vue-fontawesome";
 
 export default {
+  components: {FontAwesomeIcon},
   data() {
     return {
       realty: [],
