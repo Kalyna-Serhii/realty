@@ -32,7 +32,7 @@ header ul {
 
 header ul li {
     list-style-type: none;
-    margin: 0 35px;
+    margin: 0 15px;
     font-size: 17px;
     font-weight: 400;
     display: flex;
@@ -44,9 +44,10 @@ header ul li a {
 }
 
 .title {
+    text-decoration: none;
+    color:white;
     font-size: xx-large;
-    padding-left: 40px;
-    color: white;
+    padding-left: 30px;
 }
 
 .authorization-button {
@@ -176,13 +177,18 @@ header ul li a {
 }
 
 @media (max-width: 1250px) {
+    header {
+        height: 120px;
+    }
+
     header ul li {
-        margin: 0 10px;
+        margin: 0 -15px;
         font-size: 10px;
     }
 
     .title {
-        font-size: 15px;
+        font-size: 12px;
+        padding-left: 10px;
     }
 
     header ul {
@@ -227,9 +233,9 @@ footer a:hover {
     background-color: black;
     opacity: 0.9;
     padding: 16px;
-    margin: 76px 292px 100px 292px;
+    margin: 75px 300px 75px 300px;
     border-radius: 16px;
-    flex: 1 1 auto;
+    flex: 1 0 auto;
 }
 .page h1 {
     color: white;
@@ -301,7 +307,7 @@ footer a:hover {
     opacity: 80%;
     padding-top: 50px;
     padding-bottom: 50px;
-    overflow-x: scroll;
+    overflow-x: auto;
 }
 
 button {
@@ -359,4 +365,8 @@ td {
 .realtyPhoto {
     max-width: 200px;
     max-height: 200px;
+}
+
+.item {
+    max-width: 100px;
 }

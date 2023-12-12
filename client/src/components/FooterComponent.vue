@@ -1,20 +1,27 @@
 <template>
   <footer>
     <a href="https://t.me/woocle1">
-      <i class="fa-brands fa-telegram"></i> Telegram
+      <font-awesome-icon :icon="['fab', 'telegram']" /> Telegram
     </a>
     <a href="tel:+380989143506">
-      <i class="fa-solid fa-phone"></i> Зателефонувати
+      <font-awesome-icon :icon="['fas', 'phone']" /> Зателефонувати
     </a>
     <a href="mailto:andriitiuska@gmail.com">
-      <i class="fa-solid fa-envelope"></i> Написати нам
+      <font-awesome-icon :icon="['fas', 'envelope']" /> Написати нам
     </a>
     <a href="viber://chat?number=+380687246753">
-      <i class="fa-brands fa-viber"></i> Viber
+      <font-awesome-icon :icon="['fab', 'viber']" /> Viber
     </a>
   </footer>
+
 </template>
 
 <script>
 
+import {defineComponent} from "vue";
+import {FontAwesomeIcon} from "@fortawesome/vue-fontawesome";
+
+export default defineComponent({
+  components: {FontAwesomeIcon}
+})
 </script>

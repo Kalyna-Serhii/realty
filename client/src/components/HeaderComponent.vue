@@ -3,15 +3,13 @@
     <div class="lds-heart">
       <div></div>
     </div>
+    <div>
+      <router-link to="/" class="title">Real estate agency</router-link>
+    </div>
     <ul>
-      <li>
-        <router-link to="/" class="title">Real estate agency</router-link>
-      </li>
-    </ul>
-    <ul>
-      <li>
-        <router-link to="/">Головна</router-link>
-      </li>
+<!--      <li>-->
+<!--        <router-link to="/">Головна</router-link>-->
+<!--      </li>-->
       <li>
         <router-link to="/realty">Нерухомість</router-link>
       </li>
