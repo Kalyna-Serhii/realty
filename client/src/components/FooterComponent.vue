@@ -1,19 +1,28 @@
 <template>
   <footer>
     <a href="https://t.me/woocle1">
-      <font-awesome-icon :icon="['fab', 'telegram']" /> Telegram
+      <font-awesome-icon :icon="['fab', 'telegram']"/>
+      Служба підтримки
     </a>
-    <a href="tel:+380989143506">
-      <font-awesome-icon :icon="['fas', 'phone']" /> Зателефонувати
-    </a>
-    <a href="mailto:andriitiuska@gmail.com">
-      <font-awesome-icon :icon="['fas', 'envelope']" /> Написати нам
-    </a>
-    <a href="viber://chat?number=+380687246753">
-      <font-awesome-icon :icon="['fab', 'viber']" /> Viber
-    </a>
+    <router-link to="/contacts">
+  <span>
+    <font-awesome-icon :icon="['fas', 'phone']"/>
+    Контакти
+  </span>
+    </router-link>
+    <router-link to="/faq">
+  <span>
+    <font-awesome-icon :icon="['fas', 'comments']"/>
+    FAQ
+  </span>
+    </router-link>
+    <router-link to="/logout">
+  <span>
+    <font-awesome-icon :icon="['fas', 'sign-out-alt']"/>
+    Вийти
+  </span>
+    </router-link>
   </footer>
-
 </template>
 
 <script>

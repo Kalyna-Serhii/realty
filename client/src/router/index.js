@@ -61,6 +61,20 @@ const routes = [
             title: 'Update realty'
         }
     },
+    {
+        path: '/faq',
+        component: () => import('../pages/FaqPage.vue'),
+        meta: {
+            title: 'FAQ'
+        }
+    },
+    {
+        path: '/contacts',
+        component: () => import('../pages/ContactsPage.vue'),
+        meta: {
+            title: 'Contacts'
+        }
+    }
 ]
 
 const router = createRouter({

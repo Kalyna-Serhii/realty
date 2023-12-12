@@ -25,6 +25,13 @@ body {
     background-attachment: fixed;
 }
 
+.page-b-white {
+    background-image: url(img/background-white.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+}
+
 header {
     background-color: black;
     height: 100px;
@@ -200,7 +207,7 @@ header ul li a {
     }
 
     .title {
-        font-size: 12px;
+        font-size: 15px;
         padding-left: 10px;
     }
 
@@ -427,4 +434,85 @@ footer a:hover {
 
 .item {
     max-width: 100px;
+}
+
+.page-b-white {
+    background-image: url(img/background-white.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+}
+
+.faq-container {
+    flex: 1 1 auto;
+    max-width: 80%;
+    margin: 0 auto;
+}
+
+.faq-item {
+    border-bottom: 1px dotted darkgray;
+    padding-bottom: 12px;
+    margin-bottom: 24px;
+}
+
+.faq-item h3 {
+    margin-top: 6px;
+    font-size: 22px;
+    font-weight: bold;
+    color: black;
+    margin-bottom: 6px;
+}
+
+.faq-item p {
+    margin: 0;
+    font-size: 20px;
+    color: black;
+}
+
+.contacts {
+    background-color: black ;
+    opacity: 0.9;
+    padding: 16px;
+    margin: 75px 320px 100px 320px;
+    border-radius: 16px;
+    flex: 1 1 auto;
+}
+
+.contacts-item {
+    display: flex;
+    align-items: center;
+    margin-left: 16px;
+    border-bottom: 1px dotted beige;
+    padding-bottom: 8px;
+    margin-bottom: 16px;
+}
+
+.contact-info {
+    margin-left: 18px;
+    flex: 1;
+}
+
+.contacts-item a {
+    text-decoration: none;
+    font-size: 18px;
+    margin: 0;
+    color: white;
+    font-weight: bold;
+}
+
+.contacts-item p {
+    margin-top: 4px;
+    font-size: 16px;
+    color: white;
+}
+
+.fa-icon {
+    color: white;
+    font-size: 32px;
+}
+
+@media (max-width: 1250px) {
+    .contacts {
+        margin: 40px 20px 20px 20px;
+    }
 }
