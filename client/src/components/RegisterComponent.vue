@@ -1,93 +1,95 @@
 <template>
-  <div class="page">
-    <h1>Реєстрація</h1>
-    <form @submit.prevent="submitForm">
-      <div>
+  <div class="wrapper">
+    <div class="page">
+      <h1>Реєстрація</h1>
+      <form @submit.prevent="submitForm">
         <div>
-          <label for="name">Ім’я:</label>
-          <input
-              type="text"
-              id="name"
-              name="name"
-              v-model="formData.name"
-              @input="validate($event.target.name)"
-          />
-          <div class="error" v-if="formErrors.name">
-            {{ formErrors.name }}
+          <div>
+            <label for="name">Ім’я:</label>
+            <input
+                type="text"
+                id="name"
+                name="name"
+                v-model="formData.name"
+                @input="validate($event.target.name)"
+            />
+            <div class="error" v-if="formErrors.name">
+              {{ formErrors.name }}
+            </div>
+          </div>
+
+          <div>
+            <label for="surname">Прізвище:</label>
+            <input
+                type="text"
+                id="surname"
+                name="surname"
+                v-model="formData.surname"
+                @input="validate($event.target.name)"
+            />
+            <div class="error" v-if="formErrors.surname">
+              {{ formErrors.surname }}
+            </div>
+          </div>
+
+          <div>
+            <label for="email">Email:</label>
+            <input
+                type="email"
+                id="email"
+                name="email"
+                v-model="formData.email"
+                @input="validate($event.target.name)"
+            />
+            <div class="error" v-if="formErrors.email">
+              {{ formErrors.email }}
+            </div>
+          </div>
+
+          <div>
+            <label for="password">Пароль:</label>
+            <input
+                id="password"
+                type="password"
+                name="password"
+                v-model="formData.password"
+                @input="validate($event.target.name)"
+            />
+            <div class="error" v-if="formErrors.password">
+              {{ formErrors.password }}
+            </div>
+          </div>
+
+          <div>
+            <label for="phone">Телефон:</label>
+            <input
+                type="tel"
+                id="phone"
+                name="phone"
+                v-model.lazy="formData.phone"
+                @input="validate($event.target.name)"
+                @change="validate($event.target.name)"
+                @click="initInputMask"
+            />
+            <div class="error" v-if="formErrors.phone">
+              {{ formErrors.phone }}
+            </div>
+          </div>
+
+          <div>
+            <label for="role">Роль:</label>
+            <select
+                id="role"
+                name="role"
+                v-model="formData.role">
+              <option value="user">Користувач</option>
+              <option value="admin">Адміністратор</option>
+            </select>
           </div>
         </div>
-
-        <div>
-          <label for="surname">Прізвище:</label>
-          <input
-              type="text"
-              id="surname"
-              name="surname"
-              v-model="formData.surname"
-              @input="validate($event.target.name)"
-          />
-          <div class="error" v-if="formErrors.surname">
-            {{ formErrors.surname }}
-          </div>
-        </div>
-
-        <div>
-          <label for="email">Email:</label>
-          <input
-              type="email"
-              id="email"
-              name="email"
-              v-model="formData.email"
-              @input="validate($event.target.name)"
-          />
-          <div class="error" v-if="formErrors.email">
-            {{ formErrors.email }}
-          </div>
-        </div>
-
-        <div>
-          <label for="password">Пароль:</label>
-          <input
-              id="password"
-              type="password"
-              name="password"
-              v-model="formData.password"
-              @input="validate($event.target.name)"
-          />
-          <div class="error" v-if="formErrors.password">
-            {{ formErrors.password }}
-          </div>
-        </div>
-
-        <div>
-          <label for="phone">Телефон:</label>
-          <input
-              type="tel"
-              id="phone"
-              name="phone"
-              v-model.lazy="formData.phone"
-              @input="validate($event.target.name)"
-              @change="validate($event.target.name)"
-              @click="initInputMask"
-          />
-          <div class="error" v-if="formErrors.phone">
-            {{ formErrors.phone }}
-          </div>
-        </div>
-
-        <div>
-          <label for="role">Роль:</label>
-          <select
-              id="role"
-              name="role"
-              v-model="formData.role">
-            <option value="user">Користувач</option>
-            <option value="admin">Адміністратор</option>
-          </select>
-        </div>
-      </div>
-      <button type="submit">Зареєструватись</button>
-    </form>
+        <button type="submit">Зареєструватись</button>
+      </form>
+    </div>
   </div>
 
 </template>

@@ -7,6 +7,10 @@
     font-family: 'Inter', sans-serif;
 }
 
+.wrapper {
+    min-height: calc(100vh - 200px);
+}
+
 body {
     background-image: url(img/background.jpg);
     background-repeat: no-repeat;

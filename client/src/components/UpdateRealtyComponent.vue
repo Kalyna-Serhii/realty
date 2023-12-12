@@ -1,97 +1,99 @@
 <template>
-  <div class="page">
-    <h1>Редагування нерухомості</h1>
-    <form @submit.prevent="submitForm" enctype="multipart/form-data">
-      <div>
+  <div class="wrapper">
+    <div class="page">
+      <h1>Редагування нерухомості</h1>
+      <form @submit.prevent="submitForm" enctype="multipart/form-data">
         <div>
-          <div v-if="!formData.newPhoto">
-            <label for="currentPhoto">Поточне фото:</label>
-            <img v-if="formData.photo" :src="serverURL + /uploads/ + formData.photo"
-                 alt="Current Photo"
-                 class="realtyPhoto"
-                 id="currentPhoto"
-            >
+          <div>
+            <div v-if="!formData.newPhoto">
+              <label for="currentPhoto">Поточне фото:</label>
+              <img v-if="formData.photo" :src="serverURL + /uploads/ + formData.photo"
+                   alt="Current Photo"
+                   class="realtyPhoto"
+                   id="currentPhoto"
+              >
+            </div>
+
+            <label for="photo">Нове фото:</label>
+            <input
+                type="file"
+                id="newPhoto"
+                name="photo"
+                accept="image/*"
+                v-on:change="fileAdded()"
+            />
           </div>
 
-          <label for="photo">Нове фото:</label>
-          <input
-              type="file"
-              id="newPhoto"
-              name="photo"
-              accept="image/*"
-              v-on:change="fileAdded()"
-          />
-        </div>
+          <div>
+            <label for="type">Тип:</label>
+            <select
+                id="type"
+                name="type"
+                v-model="formData.type"
+                required
+            >
+              <option v-for="(type, index) in tests" :key="index" :value="type">{{ type }}</option>
+              <!--            <option value="Квартира">Квартира</option>-->
+              <!--            <option value="Апартаменти">Апартаменти</option>-->
+              <!--            <option value="Приватний будинок">Приватний будинок</option>-->
+              <!--            <option value="Комерційна нерухомість">Комерційна нерухомість</option>-->
+            </select>
+          </div>
 
-        <div>
-          <label for="type">Тип:</label>
-          <select
-              id="type"
-              name="type"
-              v-model="formData.type"
-              required
-          >
-            <option v-for="(type, index) in tests" :key="index" :value="type">{{ type }}</option>
-<!--            <option value="Квартира">Квартира</option>-->
-<!--            <option value="Апартаменти">Апартаменти</option>-->
-<!--            <option value="Приватний будинок">Приватний будинок</option>-->
-<!--            <option value="Комерційна нерухомість">Комерційна нерухомість</option>-->
-          </select>
-        </div>
+          <div>
+            <label for="city">Місто:</label>
+            <p>{{ formData.city }}</p>
+            <select
+                id="city"
+                name="city"
+                v-model="formData.city"
+                required
+            >
+              <option v-for="(city, index) in cities" :key="index" :value="city">{{ city }}</option>
+            </select>
+          </div>
 
-        <div>
-          <label for="city">Місто:</label>
-          <p>{{formData.city}}</p>
-          <select
-              id="city"
-              name="city"
-              v-model="formData.city"
-              required
-          >
-            <option v-for="(city, index) in cities" :key="index" :value="city">{{ city }}</option>
-          </select>
-        </div>
+          <div>
+            <label for="area">Площа:</label>
+            <input
+                type="number"
+                id="area"
+                name="area"
+                step="0.1"
+                min="1"
+                required
+                v-model="formData.area"
+            />
+          </div>
 
-        <div>
-          <label for="area">Площа:</label>
-          <input
-              type="number"
-              id="area"
-              name="area"
-              step="0.1"
-              min="1"
-              required
-              v-model="formData.area"
-          />
-        </div>
+          <div>
+            <label for="rooms">Кімнати:</label>
+            <input
+                type="number"
+                id="rooms"
+                name="rooms"
+                min="1"
+                required
+                v-model="formData.rooms"
+            />
+          </div>
 
-        <div>
-          <label for="rooms">Кімнати:</label>
-          <input
-              type="number"
-              id="rooms"
-              name="rooms"
-              min="1"
-              required
-              v-model="formData.rooms"
-          />
-        </div>
+          <div>
+            <label for="price">Ціна:</label>
+            <input
+                type="number"
+                id="price"
+                name="price"
+                min="1"
+                required
+                v-model="formData.price"
+            />
+          </div>
 
-        <div>
-          <label for="price">Ціна:</label>
-          <input
-              type="number"
-              id="price"
-              name="price"
-              min="1"
-              required
-              v-model="formData.price"
-          />
         </div>
-
-      </div>
-      <button type="submit">Зберегти</button>
-    </form>
+        <button type="submit">Зберегти</button>
+      </form>
+    </div>
   </div>
 
 </template>

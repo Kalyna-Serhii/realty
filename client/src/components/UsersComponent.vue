@@ -1,4 +1,5 @@
 <template>
+  <div class="wrapper">
     <div id="table-div">
       <button @click="toCreatePage()">Створити</button>
       <table id="table">
@@ -23,6 +24,7 @@
         </tr>
       </table>
     </div>
+  </div>
 </template>
 <script>
 import api from '@/api';
