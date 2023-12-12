@@ -49,7 +49,7 @@ header ul li a {
 
 .title {
     text-decoration: none;
-    color:white;
+    color: white;
     font-size: xx-large;
     padding-left: 30px;
 }
@@ -120,14 +120,16 @@ header ul li a {
     100% {
         transform: scale(0.9);
     }
-}.lds-heart {
-     display: inline-block;
-     position: relative;
-     width: 80px;
-     height: 80px;
-     transform: rotate(45deg);
-     transform-origin: 40px 40px;
- }
+}
+
+.lds-heart {
+    display: inline-block;
+    position: relative;
+    width: 80px;
+    height: 80px;
+    transform: rotate(45deg);
+    transform-origin: 40px 40px;
+}
 
 .lds-heart div {
     top: 32px;
@@ -235,12 +237,13 @@ footer a:hover {
 
 .page {
     background-color: black;
-    opacity: 0.9;
-    padding: 16px;
-    margin: 75px 300px 75px 300px;
-    border-radius: 16px;
+    opacity: 0.95;
+    padding: 18px;
+    margin: 70px 350px 70px 350px;
+    border-radius: 18px;
     flex: 1 0 auto;
 }
+
 .page h1 {
     color: white;
     font-size: 18px;
@@ -259,35 +262,76 @@ footer a:hover {
     border-radius: 12px;
     width: 100%;
     padding: 8px;
-    margin-bottom: 20px;
+    margin-bottom: 18px;
 }
 
 .page button {
     border-radius: 12px;
-    padding: 8px;
+    padding: 6px;
     margin: 0 auto;
     border: none;
     background-color: white;
     color: black;
     cursor: pointer;
-    font-size: 18px;
+    font-size: 16px;
     font-weight: bold;
     display: block;
 }
 
-#group {
+.page button:hover {
+    background-color: #a87c28;
+}
+
+.select-wrapper {
+    position: relative;
+    width: 100%;
+    margin-bottom: 18px;
+}
+
+.select-items {
     width: 100%;
     padding: 8px;
+    font-size: 14px;
     border-radius: 12px;
-    margin-bottom: 10px;
 }
 
-.page input[type="radio"] {
-    margin-left: -48%;
+.select-items:focus {
+    outline: none;
+    border-color: #a87c28;
 }
 
-.page button:hover {
-    background-color: #846a1c;
+.file-input-wrapper {
+    position: relative;
+    width: 100%;
+    margin-bottom: 18px;
+}
+
+.file-input-label {
+    display: inline-block;
+    padding: 8px;
+    background-color: white;
+    color: white;
+    border-radius: 12px;
+    cursor: pointer;
+    width: 100%;
+    text-align: left;
+}
+
+.current-photo {
+    padding-bottom: 18px;
+}
+
+.file-input-label:hover {
+    background-color: #a87c28;
+}
+
+.file-input {
+    position: absolute;
+    top: 0;
+    left: 0;
+    opacity: 0;
+    cursor: pointer;
+    width: 100%;
 }
 
 .error {
@@ -359,10 +403,6 @@ td {
         display: flex;
         flex-direction: column;
         min-height: 100vh;
-    }
-
-    .page input[type="radio"] {
-        margin-left: -48%;
     }
 }
 

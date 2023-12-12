@@ -4,9 +4,13 @@
       <h1>Створення нерухомості</h1>
       <form @submit.prevent="submitForm" enctype="multipart/form-data">
         <div>
-          <div>
-            <label for="photo">Фото:</label>
+          <div class="file-input-wrapper">
+            <label>Фото:</label>
+            <label class="file-input-label" for="photo">
+              Натисніть, щоб обрати фото
+            </label>
             <input
+                class="file-input"
                 type="file"
                 id="photo"
                 name="photo"
@@ -15,9 +19,10 @@
             />
           </div>
 
-          <div>
+          <div class="select-wrapper">
             <label for="type">Тип:</label>
             <select
+                class="select-items"
                 id="type"
                 name="type"
                 required
@@ -30,9 +35,10 @@
             </select>
           </div>
 
-          <div>
+          <div class="select-wrapper">
             <label for="city">Місто:</label>
             <select
+                class="select-items"
                 id="city"
                 name="city"
                 v-model="city"
@@ -43,7 +49,7 @@
           </div>
 
           <div>
-            <label for="area">Площа:</label>
+            <label for="area">Площа, м²:</label>
             <input
                 type="number"
                 id="area"

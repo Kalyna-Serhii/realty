@@ -80,9 +80,10 @@
             </div>
           </div>
 
-          <div>
+          <div class="select-wrapper">
             <label for="role">Роль:</label>
             <select
+                class="select-items"
                 id="role"
                 name="role"
                 required

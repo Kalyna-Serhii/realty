@@ -5,7 +5,7 @@
       <form @submit.prevent="submitForm" enctype="multipart/form-data">
         <div>
           <div>
-            <div v-if="!formData.newPhoto">
+            <div class="current-photo" v-if="!formData.newPhoto">
               <label for="currentPhoto">Поточне фото:</label>
               <img v-if="formData.photo" :src="serverURL + /uploads/ + formData.photo"
                    alt="Current Photo"
@@ -14,36 +14,44 @@
               >
             </div>
 
-            <label for="photo">Нове фото:</label>
-            <input
-                type="file"
-                id="newPhoto"
-                name="photo"
-                accept="image/*"
-                v-on:change="fileAdded()"
-            />
+            <div class="file-input-wrapper">
+              <label>Нове фото:</label>
+              <label class="file-input-label" for="newPhoto">
+                Натисніть, щоб обрати фото
+              </label>
+              <input
+                  class="file-input"
+                  type="file"
+                  id="newPhoto"
+                  name="photo"
+                  accept="image/*"
+                  v-on:change="fileAdded()"
+              />
+            </div>
+
           </div>
 
-          <div>
+          <div class="select-wrapper">
             <label for="type">Тип:</label>
             <select
+                class="select-items"
                 id="type"
                 name="type"
                 v-model="formData.type"
                 required
             >
               <option v-for="(type, index) in tests" :key="index" :value="type">{{ type }}</option>
-              <!--            <option value="Квартира">Квартира</option>-->
-              <!--            <option value="Апартаменти">Апартаменти</option>-->
-              <!--            <option value="Приватний будинок">Приватний будинок</option>-->
-              <!--            <option value="Комерційна нерухомість">Комерційна нерухомість</option>-->
+              <option value="Квартира">Квартира</option>
+              <option value="Апартаменти">Апартаменти</option>
+              <option value="Приватний будинок">Приватний будинок</option>
+              <option value="Комерційна нерухомість">Комерційна нерухомість</option>
             </select>
           </div>
 
-          <div>
+          <div class="select-wrapper">
             <label for="city">Місто:</label>
-            <p>{{ formData.city }}</p>
             <select
+                class="select-items"
                 id="city"
                 name="city"
                 v-model="formData.city"
@@ -54,7 +62,7 @@
           </div>
 
           <div>
-            <label for="area">Площа:</label>
+            <label for="area">Площа, м²:</label>
             <input
                 type="number"
                 id="area"
