@@ -1,15 +1,17 @@
 <template>
   <header-component></header-component>
-  <home-component></home-component>
+  <RealtyComponent></RealtyComponent>
+  <ServicesComponent></ServicesComponent>
   <footer-component></footer-component>
 </template>
 
 <script>
 import HeaderComponent from "@/components/HeaderComponent.vue";
 import FooterComponent from "@/components/FooterComponent.vue";
-import HomeComponent from "@/components/HomeComponent.vue";
+import RealtyComponent from "@/components/RealtyComponent.vue";
+import ServicesComponent from "@/components/ServicesComponent.vue";
 
 export default {
-  components: { HeaderComponent, HomeComponent, FooterComponent }
+  components: { HeaderComponent, RealtyComponent, ServicesComponent, FooterComponent }
 }
 </script>

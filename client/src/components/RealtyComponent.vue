@@ -52,10 +52,8 @@
 <script>
 import api from '@/api';
 import {serverURL} from "@/api/axiosInstance";
-import {FontAwesomeIcon} from "@fortawesome/vue-fontawesome";
 
 export default {
-  components: {FontAwesomeIcon},
   data() {
     return {
       realty: [],

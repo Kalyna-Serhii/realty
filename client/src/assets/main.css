@@ -513,3 +513,7 @@ footer a:hover {
         margin: 40px 20px 20px 20px;
     }
 }
+
+.reviews > p {
+    color: white;
+}

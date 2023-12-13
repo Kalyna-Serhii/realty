@@ -12,7 +12,7 @@
             <td>Email</td>
             <td>Номер</td>
             <td>Роль</td>
-            <td>Керування</td>
+            <td>Дії</td>
           </tr>
           <tr v-for="(item, index) in users" :key="index" class="item">
             <td>{{ item.name }}</td>
@@ -34,10 +34,8 @@
 </template>
 <script>
 import api from '@/api';
-import {FontAwesomeIcon} from "@fortawesome/vue-fontawesome";
 
 export default {
-  components: {FontAwesomeIcon},
   data() {
     return {
       users: [],

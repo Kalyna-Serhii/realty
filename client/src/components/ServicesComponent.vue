@@ -37,10 +37,8 @@
 </template>
 <script>
 import api from '@/api';
-import {FontAwesomeIcon} from "@fortawesome/vue-fontawesome";
 
 export default {
-  components: {FontAwesomeIcon},
   data() {
     return {
       services: [],

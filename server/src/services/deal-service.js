@@ -39,6 +39,9 @@ const DealService = {
         if (serviceId === '') {
             serviceId = null;
         }
+        if (realtyId && serviceId) {
+            throw ApiError.BadRequest('Realty and service are not allowed together');
+        }
         if (!realtyId && !serviceId) {
             throw ApiError.BadRequest('Realty id or service id are required');
         }
@@ -81,6 +84,9 @@ const DealService = {
         }
         if (serviceId === '') {
             serviceId = null;
+        }
+        if (realtyId && serviceId) {
+            throw ApiError.BadRequest('Realty and service are not allowed together');
         }
         if (!realtyId && !serviceId) {
             throw ApiError.BadRequest('Realty id or service id are required');

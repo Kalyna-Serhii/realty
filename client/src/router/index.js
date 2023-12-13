@@ -97,6 +97,34 @@ const routes = [
         }
     },
     {
+        path: '/deals',
+        component: () => import('../pages/DealsPage.vue'),
+        meta: {
+            title: 'Deals'
+        }
+    },
+    {
+        path: '/deals/new',
+        component: () => import('../pages/CreateDealPage.vue'),
+        meta: {
+            title: 'Create deal'
+        }
+    },
+    {
+        path: '/deal/:id',
+        component: () => import('../pages/UpdateDealPage.vue'),
+        meta: {
+            title: 'Update deal'
+        }
+    },
+    {
+        path: '/reviews',
+        component: () => import('../pages/ReviewsPage.vue'),
+        meta: {
+            title: 'Reviews'
+        }
+    },
+    {
         path: '/faq',
         component: () => import('../pages/FaqPage.vue'),
         meta: {
