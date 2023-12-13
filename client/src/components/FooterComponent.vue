@@ -21,10 +21,4 @@
 
 <script>
 
-import {defineComponent} from "vue";
-import {FontAwesomeIcon} from "@fortawesome/vue-fontawesome";
-
-export default defineComponent({
-  components: {FontAwesomeIcon}
-})
 </script>
