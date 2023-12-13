@@ -3,7 +3,8 @@
     <div class="wrapper">
       <div id="table-div">
         <button class="fa-button" @click="toCreatePage()">
-          <font-awesome-icon :icon="['fas', 'plus']" /></button>
+          <font-awesome-icon :icon="['fas', 'plus']" />
+        </button>
         <table id="table">
           <tr>
             <td>Ім’я</td>
@@ -13,9 +14,9 @@
             <td>Роль</td>
             <td>Керування</td>
           </tr>
-          <tr v-for="(item, index) in users" :key="index">
+          <tr v-for="(item, index) in users" :key="index" class="item">
             <td>{{ item.name }}</td>
-            <td class="item">{{ item.surname }}</td>
+            <td>{{ item.surname }}</td>
             <td>{{ item.email }}</td>
             <td>{{ item.phone }}</td>
             <td>{{ item.role }}</td>

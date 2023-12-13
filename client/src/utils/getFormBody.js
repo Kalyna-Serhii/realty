@@ -3,7 +3,7 @@ function getFormBody(form) {
     const formElements = Array.from(form.elements);
     formElements.forEach((element) => {
         if(element.name){
-            if((element.value && element.required === true) || element.required === false) {
+            if(element.required === true && element.value || element.required === false && element.value !== '') {
                 formBody[element.name] = element.value;
             }
         }

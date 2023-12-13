@@ -12,9 +12,11 @@ const AuthService = {
         if (userWithSameEmail) {
             throw ApiError.BadRequest(`User with ${email} email already exists`);
         }
-        const userWithSamePhone= await UserModel.findOne({where: {phone}});
-        if (userWithSamePhone) {
-            throw ApiError.BadRequest(`User with ${phone} phone number already exists`);
+        if (phone) {
+            const userWithSamePhone = await UserModel.findOne({where: {phone}});
+            if (userWithSamePhone) {
+                throw ApiError.BadRequest(`User with ${phone} phone number already exists`);
+            }
         }
 
         const hashedPassword = await bcrypt.hash(password, 3);

@@ -16,8 +16,11 @@
 
             <div class="file-input-wrapper">
               <label>Нове фото:</label>
-              <label class="file-input-label" for="newPhoto">
+              <label v-if="!formData.newPhoto" class="file-input-label" for="newPhoto">
                 Натисніть, щоб обрати фото
+              </label>
+              <label v-else class="file-input-label" for="newPhoto">
+                Фото обрано
               </label>
               <input
                   class="file-input"
@@ -37,8 +40,8 @@
                 class="select-items"
                 id="type"
                 name="type"
-                v-model="formData.type"
                 required
+                v-model="formData.type"
             >
               <option v-for="(type, index) in tests" :key="index" :value="type">{{ type }}</option>
               <option value="Квартира">Квартира</option>
@@ -54,8 +57,8 @@
                 class="select-items"
                 id="city"
                 name="city"
-                v-model="formData.city"
                 required
+                v-model="formData.city"
             >
               <option v-for="(city, index) in cities" :key="index" :value="city">{{ city }}</option>
             </select>
@@ -113,7 +116,7 @@ import {serverURL} from "@/api/axiosInstance";
 export default {
   data() {
     return {
-      serverURL: serverURL,
+      serverURL,
       cities: "",
       tests: ['Квартира', 'Апартаменти', 'Приватний будинок', 'Комерційна нерухомість'],
       formData: {

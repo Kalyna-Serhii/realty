@@ -6,8 +6,11 @@
         <div>
           <div class="file-input-wrapper">
             <label>Фото:</label>
-            <label class="file-input-label" for="photo">
+            <label v-if="!photo" class="file-input-label" for="photo">
               Натисніть, щоб обрати фото
+            </label>
+            <label v-else class="file-input-label" for="photo">
+              Фото обрано
             </label>
             <input
                 class="file-input"
@@ -16,6 +19,7 @@
                 name="photo"
                 accept="image/*"
                 required
+                v-on:change="fileAdded()"
             />
           </div>
 
@@ -98,9 +102,13 @@ export default {
     return {
       type: "",
       cities: "",
+      photo: false,
     }
   },
   methods: {
+    fileAdded() {
+      this.photo = true;
+    },
     async submitForm() {
       const form = document.querySelector("form")
       const formBody = new FormData(form);

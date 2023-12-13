@@ -28,7 +28,6 @@ const UserModel = sequelize.define(
         },
         phone: {
             type: DataTypes.STRING,
-            unique: true,
         },
         role: {
             type: DataTypes.STRING,

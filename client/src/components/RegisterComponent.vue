@@ -10,6 +10,7 @@
                 type="text"
                 id="name"
                 name="name"
+                required
                 v-model="formData.name"
                 @input="validate($event.target.name)"
             />
@@ -24,6 +25,7 @@
                 type="text"
                 id="surname"
                 name="surname"
+                required
                 v-model="formData.surname"
                 @input="validate($event.target.name)"
             />
@@ -38,6 +40,7 @@
                 type="email"
                 id="email"
                 name="email"
+                required
                 v-model="formData.email"
                 @input="validate($event.target.name)"
             />
@@ -52,6 +55,7 @@
                 id="password"
                 type="password"
                 name="password"
+                required
                 v-model="formData.password"
                 @input="validate($event.target.name)"
             />
@@ -82,6 +86,7 @@
                 class="select-items"
                 id="role"
                 name="role"
+                required
                 v-model="formData.role">
               <option value="user">Користувач</option>
               <option value="admin">Адміністратор</option>

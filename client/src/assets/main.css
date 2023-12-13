@@ -432,8 +432,8 @@ footer a:hover {
     }
 }
 
-.item {
-    max-width: 100px;
+.item > td {
+    max-width: 300px;
 }
 
 .page-b-white {

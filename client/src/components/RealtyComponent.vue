@@ -15,7 +15,7 @@
             <td>Ціна</td>
             <td>Керування</td>
           </tr>
-          <tr v-for="(item, index) in realty" :key="index">
+          <tr v-for="(item, index) in realty" :key="index" class="item">
             <td>
               <img v-if="item.photo" :src="serverURL + /uploads/ + item.photo" alt="photo" class="realtyPhoto">
             </td>
@@ -50,7 +50,7 @@ export default {
   data() {
     return {
       realty: [],
-      serverURL: serverURL,
+      serverURL,
       wishList: [],
     }
   },
