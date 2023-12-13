@@ -3,24 +3,31 @@
     <div class="wrapper">
       <div id="table-div">
         <button class="fa-button" @click="toCreatePage()">
-          <font-awesome-icon :icon="['fas', 'plus']" />
+          <font-awesome-icon :icon="['fas', 'plus']"/>
         </button>
         <table id="table">
           <tr>
             <td>Назва</td>
             <td>Опис</td>
             <td>Ціна</td>
-            <td>Керування</td>
+            <td v-if="isAuth">Дії</td>
           </tr>
           <tr v-for="(item, index) in services" :key="index" class="item">
             <td>{{ item.name }}</td>
             <td>{{ item.description }}</td>
             <td>${{ item.price }}</td>
-            <td>
+            <td v-if="isAuth && !isAdmin">
+              <button class="fa-button" @click="buyService(item.id)">
+                <font-awesome-icon :icon="['fas', 'shopping-cart']"/>
+              </button>
+            </td>
+            <td v-if="isAuth && isAdmin">
               <button class="fa-button" @click="toEditPage(item.id)">
-                <font-awesome-icon :icon="['fas', 'pen']" /></button>
+                <font-awesome-icon :icon="['fas', 'pen']"/>
+              </button>
               <button class="fa-button" @click="deleteService(item.id)">
-                <font-awesome-icon :icon="['fas', 'trash']" /></button>
+                <font-awesome-icon :icon="['fas', 'trash']"/>
+              </button>
             </td>
           </tr>
         </table>
@@ -37,6 +44,8 @@ export default {
   data() {
     return {
       services: [],
+      isAuth: localStorage.getItem('isAuth') || null,
+      isAdmin: localStorage.getItem('isAdmin') || null,
     }
   },
 
@@ -53,6 +62,11 @@ export default {
     },
     async deleteService(id) {
       await api.services.deleteService(id);
+      await this.getServices();
+    },
+    async buyService(id) {
+      const formBody = {serviceId: id}
+      await api.services.buyService(formBody);
       await this.getServices();
     },
   },

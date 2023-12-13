@@ -59,6 +59,18 @@ const servicesApi = {
                 alert(`Failed to delete service: ${error.message || error}`);
             }
         }
+    },
+
+    async buyService(body) {
+        try {
+            return await $api.post('/service/buy', body);
+        } catch (error) {
+            if (error.response) {
+                alert(`Failed to buy service: ${error.response.data.message}`);
+            } else {
+                alert(`Failed to buy service: ${error.message || error}`);
+            }
+        }
     }
 }
 

@@ -3,7 +3,7 @@
     <div class="wrapper">
       <div id="table-div">
         <button class="fa-button" @click="toCreatePage">
-          <font-awesome-icon :icon="['fas', 'plus']" />
+          <font-awesome-icon :icon="['fas', 'plus']"/>
         </button>
         <table id="table">
           <tr>
@@ -13,7 +13,7 @@
             <td>Площа, м²</td>
             <td>Кімнати</td>
             <td>Ціна</td>
-            <td>Керування</td>
+            <td v-if="isAuth">Дії</td>
           </tr>
           <tr v-for="(item, index) in realty" :key="index" class="item">
             <td>
@@ -24,15 +24,24 @@
             <td>{{ item.area }}</td>
             <td>{{ item.rooms }}</td>
             <td>${{ item.price }}</td>
-            <td>
+            <td v-if="isAuth && !isAdmin">
               <button class="fa-button" v-if="!wishList.includes(item.id)" @click="addToWishList(item.id)">
-                <font-awesome-icon :icon="['fas', 'heart']" /></button>
+                <font-awesome-icon :icon="['fas', 'heart']"/>
+              </button>
               <button class="fa-button" v-else @click="deleteFromWishList(item.id)">
-                <font-awesome-icon :icon="['far', 'heart']" /></button>
+                <font-awesome-icon :icon="['far', 'heart']"/>
+              </button>
+              <button class="fa-button" @click="buyRealty(item.id)">
+                <font-awesome-icon :icon="['fas', 'shopping-cart']"/>
+              </button>
+            </td>
+            <td v-if="isAuth && isAdmin">
               <button class="fa-button" @click="toEditPage(item.id)">
-                <font-awesome-icon :icon="['fas', 'pen']" /></button>
+                <font-awesome-icon :icon="['fas', 'pen']"/>
+              </button>
               <button class="fa-button" @click="deleteRealty(item.id)">
-                <font-awesome-icon :icon="['fas', 'trash']" /></button>
+                <font-awesome-icon :icon="['fas', 'trash']"/>
+              </button>
             </td>
           </tr>
         </table>
@@ -52,6 +61,8 @@ export default {
       realty: [],
       serverURL,
       wishList: [],
+      isAuth: localStorage.getItem('isAuth') || null,
+      isAdmin: localStorage.getItem('isAdmin') || null,
     }
   },
 
@@ -68,6 +79,11 @@ export default {
     },
     async deleteRealty(id) {
       await api.realty.deleteRealty(id);
+      await this.getRealty();
+    },
+    async buyRealty(id) {
+      const formBody = {realtyId: id}
+      await api.realty.buyRealty(formBody);
       await this.getRealty();
     },
     async getWishList() {
@@ -91,7 +107,9 @@ export default {
 
   async mounted() {
     await this.getRealty();
-    await this.getWishList();
+    if(this.isAuth) {
+      await this.getWishList();
+    }
   },
 }
 </script>

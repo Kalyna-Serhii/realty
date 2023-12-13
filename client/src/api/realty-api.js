@@ -60,6 +60,18 @@ const realtyApi = {
             }
         }
     },
+
+    async buyRealty(body) {
+        try {
+            return await $api.post('/realty/buy', body);
+        } catch (error) {
+            if (error.response) {
+                alert(`Failed to buy realty: ${error.response.data.message}`);
+            } else {
+                alert(`Failed to buy realty: ${error.message || error}`);
+            }
+        }
+    },
 };
 
 export default realtyApi;

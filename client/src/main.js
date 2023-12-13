@@ -1,18 +1,18 @@
 import './assets/main.css'
 
+import {library} from '@fortawesome/fontawesome-svg-core';
+import {FontAwesomeIcon} from '@fortawesome/vue-fontawesome';
+import {fab} from "@fortawesome/free-brands-svg-icons";
+import {fas} from "@fortawesome/free-solid-svg-icons";
+import {far} from "@fortawesome/free-regular-svg-icons";
 import {createApp} from 'vue'
 import App from './App.vue'
 import router from './router'
 
-const app = createApp(App)
+library.add(fas, fab, far);
 
+
+const app = createApp(App)
+app.component('font-awesome-icon', FontAwesomeIcon)
 app.use(router)
 app.mount('#app')
-
-import {library} from '@fortawesome/fontawesome-svg-core'
-import {faTelegram, faViber} from '@fortawesome/free-brands-svg-icons'
-import {faPhone, faEnvelope, faPlus} from '@fortawesome/free-solid-svg-icons';
-import {faHeart as farHeart, faEnvelope as farEnvelope} from "@fortawesome/free-regular-svg-icons";
-import {faHeart as fasHeart, faPen, faTrash, faGlobeEurope, faPhoneVolume, faComments, faComment, faSignOutAlt} from "@fortawesome/free-solid-svg-icons";
-
-library.add(faTelegram, faPhone, faEnvelope, faViber, faPlus, farHeart, fasHeart, faPen, faTrash, faGlobeEurope, faPhoneVolume, farEnvelope, faComments, faComment, faSignOutAlt);
