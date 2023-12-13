@@ -76,6 +76,27 @@ const routes = [
         }
     },
     {
+        path: '/services',
+        component: () => import('../pages/ServicesPage.vue'),
+        meta: {
+            title: 'Services'
+        }
+    },
+    {
+        path: '/services/new',
+        component: () => import('../pages/CreateServicePage.vue'),
+        meta: {
+            title: 'Create service'
+        }
+    },
+    {
+        path: '/service/:id',
+        component: () => import('../pages/UpdateServicePage.vue'),
+        meta: {
+            title: 'Update service'
+        }
+    },
+    {
         path: '/faq',
         component: () => import('../pages/FaqPage.vue'),
         meta: {
