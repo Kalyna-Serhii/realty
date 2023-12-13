@@ -68,11 +68,7 @@ header ul li a {
     padding-left: 30px;
 }
 
-.authorization-button {
-    text-decoration: underline #fff;
-}
-
-.registration-button {
+.auth-button {
     text-decoration: underline #fff;
 }
 

@@ -105,6 +105,7 @@ import api from "../api";
 import inputMask from "../utils/InputMask";
 import getFormBody from "../utils/getFormBody";
 import {validateEmail, validateName, validatePassword, validatePhone, validateSurname} from "@/utils/validateFields";
+import {setInLocalStorage} from "@/utils/LocalStorage";
 
 export default {
   data() {
@@ -156,7 +157,8 @@ export default {
       const formBody = getFormBody(form);
       const response = await api.auth.register(formBody);
       if (response && response.status === 200) {
-        this.$router.push("/");
+        setInLocalStorage();
+        this.$router.push('/');
       }
     },
   },

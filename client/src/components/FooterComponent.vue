@@ -16,12 +16,6 @@
     FAQ
   </span>
     </router-link>
-    <router-link to="/logout">
-  <span>
-    <font-awesome-icon :icon="['fas', 'sign-out-alt']"/>
-    Вийти
-  </span>
-    </router-link>
   </footer>
 </template>
 

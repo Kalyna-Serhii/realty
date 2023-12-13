@@ -20,6 +20,20 @@ const routes = [
         }
     },
     {
+        path: '/login',
+        component: () => import('../pages/LoginPage.vue'),
+        meta: {
+            title: 'Login'
+        }
+    },
+    {
+        path: '/logout',
+        component: () => import('../pages/LogoutPage.vue'),
+        meta: {
+            title: 'Logout'
+        }
+    },
+    {
         path: '/users',
         component: () => import('../pages/UsersPage.vue'),
         meta: {
