@@ -2,7 +2,7 @@
   <div class="page-b-black">
     <div class="wrapper">
       <div id="table-div">
-        <button class="fa-button" @click="toCreatePage()">
+        <button class="fa-button" @click="toCreatePage()" v-if="isAdmin">
           <font-awesome-icon :icon="['fas', 'plus']"/>
         </button>
         <table id="table">

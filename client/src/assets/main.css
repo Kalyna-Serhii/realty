@@ -237,6 +237,16 @@ footer a:hover {
     color: #846a1c;
 }
 
+.review-item {
+    background-color: black;
+    color: white;
+    opacity: 0.9;
+    margin: 12px 350px 12px 350px;
+    border-radius: 18px;
+    padding: 12px;
+
+}
+
 @media (max-width: 1250px) {
     footer {
         flex-direction: column;
@@ -249,9 +259,8 @@ footer a:hover {
     background-color: black;
     opacity: 0.95;
     padding: 18px;
-    margin: 70px 350px 70px 350px;
+    margin: 70px 350px 40px 350px;
     border-radius: 18px;
-    flex: 1 0 auto;
 }
 
 .page h1 {
@@ -409,7 +418,11 @@ footer a:hover {
 
 @media (max-width: 1250px) {
     .page {
-        margin: 40px 40px 80px 40px;
+        margin: 40px 20px 60px 20px;
+    }
+
+    .review-item {
+        margin: 6px 20px 12px 20px;
     }
 
     #table-div {

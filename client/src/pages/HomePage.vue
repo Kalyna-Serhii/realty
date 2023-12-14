@@ -1,7 +1,9 @@
 <template>
   <header-component></header-component>
   <div class="page-b-black">
+    <br>
     <RealtyComponent></RealtyComponent>
+    <br><br><br>
     <ServicesComponent></ServicesComponent>
   </div>
   <footer-component></footer-component>

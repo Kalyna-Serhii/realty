@@ -15,9 +15,12 @@
           <button type="submit">Написати</button>
         </div>
       </form>
+    </div>
 
-      <div v-for="(item, index) in reviews" :key="index" class="reviews">
+    <div v-for="(item, index) in reviews" :key="index" class="reviews">
+      <div class="review-item">
         <p>{{ item.message }}</p>
+        <br>
         <p>{{ item.userName }} {{ item.userSurname }}</p>
         <p>{{ item.date }}</p>
       </div>

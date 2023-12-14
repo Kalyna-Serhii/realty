@@ -1,7 +1,7 @@
 <template>
   <div class="wrapper">
     <div class="page">
-      <h1>Створення користувача</h1>
+      <h1>Створення сервісу</h1>
       <form @submit.prevent="submitForm">
         <div>
           <div>

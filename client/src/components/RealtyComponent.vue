@@ -2,7 +2,7 @@
   <div class="page-b-black">
     <div class="wrapper">
       <div id="table-div">
-        <button class="fa-button" @click="toCreatePage">
+        <button class="fa-button" @click="toCreatePage" v-if="isAdmin">
           <font-awesome-icon :icon="['fas', 'plus']"/>
         </button>
         <table id="table">
@@ -26,10 +26,10 @@
             <td>${{ item.price }}</td>
             <td v-if="isAuth && !isAdmin">
               <button class="fa-button" v-if="!wishList.includes(item.id)" @click="addToWishList(item.id)">
-                <font-awesome-icon :icon="['fas', 'heart']"/>
+                <font-awesome-icon :icon="['far', 'heart']"/>
               </button>
               <button class="fa-button" v-else @click="deleteFromWishList(item.id)">
-                <font-awesome-icon :icon="['far', 'heart']"/>
+                <font-awesome-icon :icon="['fas', 'heart']"/>
               </button>
               <button class="fa-button" @click="buyRealty(item.id)">
                 <font-awesome-icon :icon="['fas', 'shopping-cart']"/>

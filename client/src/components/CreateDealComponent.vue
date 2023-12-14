@@ -1,7 +1,7 @@
 <template>
   <div class="wrapper">
     <div class="page">
-      <h1>Створення користувача</h1>
+      <h1>Створення угоди</h1>
       <form @submit.prevent="submitForm">
         <div>
           <div>
@@ -28,7 +28,7 @@
             >
               <option value=""></option>
               <option v-for="(item, index) in realty" :key="index" :value="item.id">
-                {{ item.city }} {{item.area}}м² ${{ item.price }}
+                {{ item.city }} {{item.area}}м² ${{ item.price }} {{ item.type }}
               </option>
             </select>
           </div>

@@ -13,7 +13,7 @@
     <router-link to="/faq">
   <span>
     <font-awesome-icon :icon="['fas', 'comments']"/>
-    FAQ
+    Часті запитання
   </span>
     </router-link>
   </footer>
