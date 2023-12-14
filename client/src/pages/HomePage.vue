@@ -1,7 +1,9 @@
 <template>
   <header-component></header-component>
-  <RealtyComponent></RealtyComponent>
-  <ServicesComponent></ServicesComponent>
+  <div class="page-b-black">
+    <RealtyComponent></RealtyComponent>
+    <ServicesComponent></ServicesComponent>
+  </div>
   <footer-component></footer-component>
 </template>
 
@@ -12,6 +14,15 @@ import RealtyComponent from "@/components/RealtyComponent.vue";
 import ServicesComponent from "@/components/ServicesComponent.vue";
 
 export default {
-  components: { HeaderComponent, RealtyComponent, ServicesComponent, FooterComponent }
+  components: { HeaderComponent, RealtyComponent, ServicesComponent, FooterComponent },
+  mounted() {
+    const tables = document.querySelectorAll('.wrapper');
+    const tableRealty = tables[0];
+    const tableServices = tables[1];
+    tableRealty.classList.remove('wrapper');
+    tableServices.classList.remove('wrapper');
+    const tablesHome = document.querySelector('.page-b-black');
+    tablesHome.classList.add('wrapper');
+  }
 }
 </script>
