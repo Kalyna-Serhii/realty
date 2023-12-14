@@ -17,8 +17,8 @@
     <div class="our-partners section">
       <h1 class="main-title">Наші партнери</h1>
       <div class="images">
-        <img src="../assets/img/partner-1.jpg" alt="" width="200" height="200"/>
-        <img src="../assets/img/partner-2.jpg" alt="" width="200" height="200"/>
+        <img class="image-1" src="../assets/img/partner-1.jpg" alt="" width="200" height="200"/>
+        <img class="image-2" src="../assets/img/partner-2.jpg" alt="" width="200" height="200"/>
       </div>
     </div>
   </div>
