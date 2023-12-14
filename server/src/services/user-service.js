@@ -1,7 +1,7 @@
 import bcrypt from 'bcrypt';
 import UserModel from '../models/user-model.js';
-import tokenService from "./token-service.js";
 import RealtyModel from "../models/realty-model.js";
+import tokenService from "./token-service.js";
 import ApiError from '../exceptions/api-error.js';
 
 const UserService = {
@@ -73,10 +73,14 @@ const UserService = {
         await user.update(updatedFields);
     },
 
-    async deleteUser(id) {
+    async deleteUser(id, token) {
         const user = await UserModel.findOne({where: {id}});
         if (!user) {
             throw ApiError.BadRequest(`No user found with id = ${id}`);
+        }
+        const userData = tokenService.validateAccessToken(token);
+        if (userData.id === parseInt(id)) {
+            throw ApiError.BadRequest(`You can't delete yourself`);
         }
         await user.destroy();
     },
