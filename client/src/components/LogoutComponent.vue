@@ -10,7 +10,7 @@ export default {
   methods: {
     async submitRequest() {
       const response = await api.auth.logout();
-      if (response.status === 200) {
+      if (response && response.status === 200) {
         deleteFromLocalStorage();
         this.$router.push('/');
       }
