@@ -53,11 +53,15 @@ const AuthService = {
     },
 
     async logout(refreshToken) {
+        console.log('LOGOUT');
+        console.log('refreshToken', refreshToken)
         if (!refreshToken) {
             throw ApiError.UnauthorizedError();
         }
         const userData = tokenService.validateRefreshToken(refreshToken);
         const tokenFromDb = await tokenService.findToken(refreshToken);
+        console.log('userData', userData)
+        console.log('tokenFromDb', tokenFromDb)
         if (!userData || !tokenFromDb) {
             throw ApiError.UnauthorizedError();
         }
@@ -65,11 +69,15 @@ const AuthService = {
     },
 
     async refresh(refreshToken) {
+        console.log('REFRESH');
+        console.log('refreshToken', refreshToken)
         if (!refreshToken) {
             throw ApiError.UnauthorizedError();
         }
         const userData = tokenService.validateRefreshToken(refreshToken);
         const tokenFromDb = await tokenService.findToken(refreshToken);
+        console.log('userData', userData)
+        console.log('tokenFromDb', tokenFromDb)
         if (!userData || !tokenFromDb) {
             throw ApiError.UnauthorizedError();
         }
