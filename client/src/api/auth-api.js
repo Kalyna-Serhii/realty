@@ -6,9 +6,9 @@ const authApi = {
             return await $api.post('/register', body);
         } catch (error) {
             if (error.response) {
-                alert(`Failed to receive users: ${error.response.data.message}`);
+                alert(`Failed to register: ${error.response.data.message}`);
             } else {
-                alert(`Failed to receive users: ${error.message || error}`);
+                alert(`Failed to register: ${error.message || error}`);
             }
         }
     },
@@ -17,9 +17,9 @@ const authApi = {
             return await $api.post('/login', body);
         } catch (error) {
             if (error.response) {
-                alert(`Failed to receive users: ${error.response.data.message}`);
+                alert(`Failed to login: ${error.response.data.message}`);
             } else {
-                alert(`Failed to receive users: ${error.message || error}`);
+                alert(`Failed to login: ${error.message || error}`);
             }
         }
     },
@@ -28,9 +28,9 @@ const authApi = {
             return await $api.post('/logout', {});
         } catch (error) {
             if (error.response) {
-                alert(`Failed to receive users: ${error.response.data.message}`);
+                alert(`Failed to logout: ${error.response.data.message}`);
             } else {
-                alert(`Failed to receive users: ${error.message || error}`);
+                alert(`Failed to logout: ${error.message || error}`);
             }
         }
     },

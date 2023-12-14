@@ -1,4 +1,5 @@
 import {DataTypes, sequelize} from '../database/database.config.js';
+import DealModel from "./deal-model.js";
 
 const RealtyModel = sequelize.define(
     'Realty',
@@ -39,5 +40,11 @@ const RealtyModel = sequelize.define(
         timestamps: false,
     },
 );
+
+RealtyModel.hasMany(DealModel, {
+    foreignKey: 'realtyId',
+    onDelete: 'CASCADE',
+    hooks: true,
+});
 
 export default RealtyModel;

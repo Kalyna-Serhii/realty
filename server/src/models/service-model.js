@@ -1,4 +1,5 @@
 import {DataTypes, sequelize} from '../database/database.config.js';
+import DealModel from "./deal-model.js";
 
 const ServiceModel = sequelize.define(
     'Service',
@@ -27,5 +28,11 @@ const ServiceModel = sequelize.define(
         timestamps: false,
     },
 );
+
+ServiceModel.hasMany(DealModel, {
+    foreignKey: 'serviceId',
+    onDelete: 'CASCADE',
+    hooks: true,
+});
 
 export default ServiceModel;

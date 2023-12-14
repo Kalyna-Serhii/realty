@@ -1,5 +1,4 @@
 import {DataTypes, sequelize} from '../database/database.config.js';
-import UserModel from './user-model.js';
 
 const TokenModel = sequelize.define(
     'Token',
@@ -18,7 +17,5 @@ const TokenModel = sequelize.define(
         timestamps: false,
     },
 );
-
-TokenModel.belongsTo(UserModel, {foreignKey: 'userId'});
 
 export default TokenModel;
