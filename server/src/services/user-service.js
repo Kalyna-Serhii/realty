@@ -86,6 +86,7 @@ const UserService = {
     },
 
     async getWishList(token) {
+        console.log("token-from-wishlist", token)
         const userData = tokenService.validateAccessToken(token);
         if (!userData) {
             throw ApiError.UnauthorizedError();
