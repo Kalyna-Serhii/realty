@@ -58,7 +58,7 @@ const UserService = {
         }
         if (phone) {
             const userWithSamePhone = await UserModel.findOne({where: {phone}});
-            if (userWithSamePhone) {
+            if (userWithSamePhone && userWithSamePhone.id !== parseInt(id)) {
                 throw ApiError.BadRequest(`User with ${phone} phone number already exists`);
             }
         } else {
