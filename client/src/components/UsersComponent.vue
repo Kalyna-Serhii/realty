@@ -7,12 +7,12 @@
         </button>
         <table id="table">
           <tr>
-            <td>Ім’я</td>
+            <td class="table-radius1">Ім’я</td>
             <td>Прізвище</td>
             <td>Email</td>
             <td>Номер</td>
             <td>Роль</td>
-            <td>Дії</td>
+            <td class="table-radius2">Дії</td>
           </tr>
           <tr v-for="(item, index) in users" :key="index" class="item">
             <td>{{ item.name }}</td>
